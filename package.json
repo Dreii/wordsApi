@@ -1,0 +1,11 @@
+{
+    "name":"wordsapi",
+    "version":"1.0.0",
+    "dependencies":{
+        "express":"*",
+        "body-parser":"*",
+        "mongojs":"*",
+        "ejs": "~0.8.5"
+    },
+    "author": "Sean Verhaagen"
+}
