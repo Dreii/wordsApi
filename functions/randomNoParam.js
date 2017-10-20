@@ -25,4 +25,4 @@ module.exports = function(db, req, res){
             }
         }
     );
-}
+};

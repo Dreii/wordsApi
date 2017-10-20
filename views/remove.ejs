@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Add words</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $("#form").submit(function(){
+                    var body = $("#text").val();
+                    $.ajax({
+                        url: '/remove',
+                        data: JSON.stringify({"value": body}),
+                        type:'POST',
+                        contentType:'application/json',
+                        success: function(data){
+                            $(document.body).html(JSON.stringify(data));
+                        },
+                        error: function(xhr,status,err){
+                            console.log(err);
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Add words, separated by "," to remove them from the list</h1>
+        <form id="form" action="/remove" method="post">
+            <textarea name="text" id="text"></textarea>
+            <input type="submit" id="submit" value="Submit">
+        </form>
+
+        <div id="result"></div>
+    </body>
+</html>

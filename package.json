@@ -1,11 +1,22 @@
 {
-    "name":"wordsapi",
-    "version":"1.0.0",
-    "dependencies":{
-        "express":"*",
-        "body-parser":"*",
-        "mongojs":"*",
-        "ejs": "~0.8.5"
-    },
-    "author": "Sean Verhaagen"
+  "name": "wordsapi",
+  "version": "1.0.1",
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongojs": "*",
+    "ejs": "~0.8.5"
+  },
+  "author": "Sean Verhaagen",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "request": "^2.83.0",
+    "should": "^13.1.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }

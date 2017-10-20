@@ -14,7 +14,7 @@ module.exports = function(db, req, res){
                 var val1 = req.params.val1;
                 var val2 = req.params.val2;
                 var lett, num;
-                
+
                 //Check if one of the values is a letter or string and,
                 //one is a number, if so assign each to the corect value.
                 //if not, return an error.
@@ -34,10 +34,10 @@ module.exports = function(db, req, res){
                     res.json({"result": "error - one value must be a number and the other a letter!"});
                     return;
                 }
-                
+
                 //if for some reason the letter input isnt just one character, make it one.
                 lett = lett.substring(0,1).toUpperCase();
-                
+
                 console.log('Request for '+num+' random words starting with '+lett+'...');
                 //get the amount of entries in the letter array asked for
                 var arrayLength = doc[lett].length;
@@ -47,10 +47,10 @@ module.exports = function(db, req, res){
                 for(i=0;i<num;i++){
                     result.push(doc[lett][helpers.random(arrayLength)]);
                 }
-                
+
                 //return the result array.
                 res.json(result);
             }
         }
     );
-}
+};

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Add words</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <h1>Thanks for using this wordlist API!</h1>
+
+        <p>To add words you should go to "/add" to find a form for adding words.</p>
+        <br />
+        <p>To remove a word you can go to "/remove" and find a form for removing words</p>
+        <br />
+        <p>To get a list of words in the database that start with a letter go to "/list/letter" ie: "/list/a".</p>
+        <br />
+        <p>To check if a word is in the databse use "/check/word" where word is the word you want to check.</p>
+        <br />
+        <br />
+        <p>To get a random word from the database you have 3 options.</p>
+        <ul>
+          <li><p>Going to "/random" with no extra options will give you one random word with any starting letter.</p></li>
+          <li><p>Going to "/random" with one extra option ie: "/random/4" or "/random/a" will give you a number of random words with any starting letter, or a random word with the starting letter you specify.</p></li>
+          <li><p>Going to "/random" with two extra options ie: "/random/4/a" or "/random/3/b" will give you the number of random words you ask for with the starting letter you ask for. The number and letter can be in any order.</p></li>
+        </ul>
+    </body>
+</html>

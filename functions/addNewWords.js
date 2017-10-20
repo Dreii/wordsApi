@@ -1,19 +1,19 @@
-module.exports = function(db, req, res){
-    
-    console.log('Adding words...')
-    
+module.exports = function(req, res, db){
+
+    console.log('Adding words...');
+
     //initialize a variable for the starting index of each word in our list
     var start = 0;
     //initialize a variable for the ending index of each word in our list
     var end = 0;
     //a variable for which character will deliminate, or separate our words.
     var char = ",";
-    
+
     //get the list from our request object, add a deliminator at the end so that
     //the program knows when to stop.
     var mainList = req.body.value+char;
-    
-    //initialize an array for each letter of the alphabet, we will sort our words 
+
+    //initialize an array for each letter of the alphabet, we will sort our words
     //from the list into these so that we can enter each word into the database sorted
     //by its first letter.
     var aa = [], bb = [], cc = [], dd = [], ee = [], ff = [],
@@ -21,8 +21,8 @@ module.exports = function(db, req, res){
         mm = [], nn = [], oo = [], pp = [], qq = [], rr = [],
         ss = [], tt = [], uu = [], vv = [], ww = [], xx = [],
         yy = [], zz = [];
-    
-    
+
+
     //cycle through the input list, one character at a time
     for(i=0;i<mainList.length;i++){
         //if the character currently in view is the deliminating character...
@@ -32,20 +32,30 @@ module.exports = function(db, req, res){
             //the substing between the last deliminator position and the current one.
             end = i;
             var entry = mainList.substring(start,end);
-            
+
+            //if the begining of the word has a space remove it.
+            if(entry.substring(0,1) == " "){
+              entry = entry.substring(1, entry.length);
+            }
+
+            //if the end of the word has a space remove it.
+            if(entry.substring(entry.length-1, entry.length) == " "){
+              entry = entry.substring(0, entry.length-1);
+            }
+
             //function that takes the first letter from the new entry text,
             //then chooses the array for that starting letter and adds the word to the end.
             insertEntriesIntoArrays(entry,aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,mm,nn,oo,pp,qq,rr,ss,tt,uu,vv,ww,xx,yy,zz);
-            
+
             //set the new start point to right after the deliminator that triggered.
             start = end+1;
         }
     }
-    
+
     //once we get all of the entries into separate arrays, we take each array and add all of
     //its values to the correct databases.
     insertArraysIntoDB(db,req,res,aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,mm,nn,oo,pp,qq,rr,ss,tt,uu,vv,ww,xx,yy,zz);
-}
+};
 
 
 
